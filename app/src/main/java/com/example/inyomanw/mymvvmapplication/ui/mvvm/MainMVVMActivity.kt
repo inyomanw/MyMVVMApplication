@@ -26,8 +26,8 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
 
     private val classAdapter by lazy {
         GeneralRecyclerViewAdapter(R.layout.item_barang, barangList,
-            { barang, _, _ ->
-
+            { barang, _ , _ ->
+                Toast.makeText(this@MainMVVMActivity,barang.namabarang,Toast.LENGTH_SHORT).show()
             },
             { barang, view ->
                 with(barang) {
@@ -46,14 +46,12 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_main_mvvm)
         observerItem()
 
-        viewModel.getBarangs()
-
-        rv_barang.apply {
+        with(rv_barang){
             layoutManager = LinearLayoutManager(this@MainMVVMActivity)
             rv_barang.adapter = classAdapter
 
         }
-//        rv_barang.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        viewModel.getBarangs()
     }
 
     private fun observerItem(){
@@ -64,12 +62,15 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
         when(state){
             is DefaultState -> {
                 progress_bar.gone()
-                Log.d(TAG,"DefaultState")
-                barangList = state.fetchBarang.toMutableList()
+                barangList.addAll(state.fetchBarang.toMutableList())
+//                barangList.forEachIndexed { index, barang ->
+//                    Log.d(TAG,"no $index nama barang : "+ barang.namabarang)
+//                }
+
+                classAdapter.update(barangList)
             }
             is OnErrorState -> {
                 progress_bar.gone()
-                Log.d(TAG,"ErrorState")
                 Toast.makeText(this, "error ${state.message}", Toast.LENGTH_SHORT).show()
             }
             is OnLoadingState ->{

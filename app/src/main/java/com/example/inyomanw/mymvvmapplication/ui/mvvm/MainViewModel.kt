@@ -1,6 +1,7 @@
 package com.example.inyomanw.mymvvmapplication.ui.mvvm
 
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import com.example.inyomanw.mymvvmapplication.base.BaseViewModel
 import com.example.inyomanw.mymvvmapplication.data.models.Barang
 import com.example.inyomanw.mymvvmapplication.data.repository.BarangRepo
@@ -8,6 +9,7 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(val repo: BarangRepo) : BaseViewModel(){
 
+    val TAG : String = "logv"+ MainViewModel::class.java.simpleName
     val stateLiveData = MutableLiveData<MainState>()
 
     init{
@@ -17,8 +19,8 @@ class MainViewModel @Inject constructor(val repo: BarangRepo) : BaseViewModel(){
 
     fun getBarangs(){
         compositeDisposable.add(repo.getBarangs(
-            response = {
-                it?.let {
+            response = { response ->
+                response?.let {
 //                    this::onSuccess
                     onSuccess(it)
                 }

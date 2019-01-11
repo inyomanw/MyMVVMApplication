@@ -32,4 +32,8 @@ class GeneralRecyclerViewAdapter<T>(@LayoutRes private val resId: Int,
         }
     }
 
+    fun update(newData: MutableList<T>) {
+        data.addAll(newData)
+        notifyDataSetChanged()
+    }
 }
