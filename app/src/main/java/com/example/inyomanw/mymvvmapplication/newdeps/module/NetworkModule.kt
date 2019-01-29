@@ -1,5 +1,6 @@
 package com.example.inyomanw.mymvvmapplication.newdeps.module
 
+import com.example.inyomanw.mymvvmapplication.BuildConfig
 import com.example.inyomanw.mymvvmapplication.api.ApiInterface
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
@@ -54,7 +55,7 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
-            .baseUrl("https://inyomanw.com/WarungSepatu/api/v1/")
+            .baseUrl(BuildConfig.BASE_URL_HARDCODE)
             .build()
     }
 

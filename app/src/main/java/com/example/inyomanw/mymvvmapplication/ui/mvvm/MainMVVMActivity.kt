@@ -3,7 +3,6 @@ package com.example.inyomanw.mymvvmapplication.ui.mvvm
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.widget.Toast
 import com.example.inyomanw.mymvvmapplication.R
 import com.example.inyomanw.mymvvmapplication.data.models.Barang
@@ -17,7 +16,7 @@ import javax.inject.Inject
 
 class MainMVVMActivity : DaggerAppCompatActivity() {
 
-    private val TAG : String = "logv" + MainMVVMActivity::class.java.simpleName
+    private val TAG: String = "logv" + MainMVVMActivity::class.java.simpleName
     @Inject
     lateinit var viewModel: MainViewModel
 
@@ -26,8 +25,8 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
 
     private val classAdapter by lazy {
         GeneralRecyclerViewAdapter(R.layout.item_barang, barangList,
-            { barang, _ , _ ->
-                Toast.makeText(this@MainMVVMActivity,barang.namabarang,Toast.LENGTH_SHORT).show()
+            { barang, _, _ ->
+                Toast.makeText(this@MainMVVMActivity, barang.namabarang, Toast.LENGTH_SHORT).show()
             },
             { barang, view ->
                 with(barang) {
@@ -35,7 +34,10 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
                     view.tvDeskripsi.text = deskripsi
                     view.tvMerk.text = merk
                     view.tvHarga.text = harga
-                    view.imvBarang.loadImage(this@MainMVVMActivity, "https://inyomanw.com/WarungSepatu/"+gambars[0].gambar)
+                    view.imvBarang.loadImage(
+                        this@MainMVVMActivity,
+                        "https://inyomanw.com/WarungSepatu/" + gambars[0].gambar
+                    )
                 }
 
             })
@@ -46,7 +48,7 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_main_mvvm)
         observerItem()
 
-        with(rv_barang){
+        with(rv_barang) {
             layoutManager = LinearLayoutManager(this@MainMVVMActivity)
             rv_barang.adapter = classAdapter
 
@@ -54,12 +56,12 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
         viewModel.getBarangs()
     }
 
-    private fun observerItem(){
-        viewModel.stateLiveData.observe(this,stateObserver)
+    private fun observerItem() {
+        viewModel.stateLiveData.observe(this, stateObserver)
     }
 
-    private val stateObserver = Observer<MainState> {state ->
-        when(state){
+    private val stateObserver = Observer<MainState> { state ->
+        when (state) {
             is DefaultState -> {
                 progress_bar.gone()
                 barangList.addAll(state.fetchBarang.toMutableList())
@@ -73,7 +75,7 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
                 progress_bar.gone()
                 Toast.makeText(this, "error ${state.message}", Toast.LENGTH_SHORT).show()
             }
-            is OnLoadingState ->{
+            is OnLoadingState -> {
                 barangList = state.fetchBarang.toMutableList()
             }
         }

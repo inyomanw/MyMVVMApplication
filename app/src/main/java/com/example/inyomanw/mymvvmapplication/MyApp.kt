@@ -7,7 +7,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
 
-class MyApp : DaggerApplication(){
+class MyApp : DaggerApplication() {
 
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
@@ -19,13 +19,4 @@ class MyApp : DaggerApplication(){
         }
         return newAppComponent
     }
-
-//    val appComponent: AppComponent by lazy {
-//        DaggerAppComponent.builder()
-//            .networkModule(NetworkModule())
-//            .build()
-//    }
-
-
-
 }
