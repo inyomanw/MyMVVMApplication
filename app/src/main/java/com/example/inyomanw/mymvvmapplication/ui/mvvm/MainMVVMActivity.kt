@@ -1,18 +1,20 @@
 package com.example.inyomanw.mymvvmapplication.ui.mvvm
 
 import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
+import com.example.core.Utils.*
 import com.example.inyomanw.mymvvmapplication.R
 import com.example.inyomanw.mymvvmapplication.data.models.Barang
-import com.example.inyomanw.mymvvmapplication.utils.GeneralRecyclerViewAdapter
-import com.example.inyomanw.mymvvmapplication.utils.gone
-import com.example.inyomanw.mymvvmapplication.utils.loadImage
+import com.example.core.ui.FlexibleSpace
+import com.example.core.ui.tolongin.HomeCoreActivity
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main_mvvm.*
 import kotlinx.android.synthetic.main.item_barang.view.*
 import javax.inject.Inject
+
 
 class MainMVVMActivity : DaggerAppCompatActivity() {
 
@@ -54,21 +56,33 @@ class MainMVVMActivity : DaggerAppCompatActivity() {
 
         }
         viewModel.getBarangs()
+        fab.setOnClickListener {
+            buildAlertDialog(message = "Apakah Anda yakin bosku?",
+                positiveAction = {
+                    if (isConnectionAvailable()){
+                        startActivity(Intent(this@MainMVVMActivity,HomeCoreActivity::class.java))
+                    }else{
+                        showSnackBar(constraintlayout,"Check Your Connection")
+                    }
+                }).show()
+//            startActivity(Intent(this@MainMVVMActivity,HomeCoreActivity::class.java))
+        }
     }
 
     private fun observerItem() {
         viewModel.stateLiveData.observe(this, stateObserver)
+
     }
 
     private val stateObserver = Observer<MainState> { state ->
         when (state) {
             is DefaultState -> {
                 progress_bar.gone()
-                barangList.addAll(state.fetchBarang.toMutableList())
+                barangList.addAll(state.fetchBarang)
 //                barangList.forEachIndexed { index, barang ->
 //                    Log.d(TAG,"no $index nama barang : "+ barang.namabarang)
 //                }
-
+//                classAdapter.notifyDataSetChanged()
                 classAdapter.update(barangList)
             }
             is OnErrorState -> {

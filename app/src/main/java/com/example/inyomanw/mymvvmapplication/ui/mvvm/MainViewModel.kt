@@ -21,12 +21,10 @@ class MainViewModel @Inject constructor(val repo: BarangRepo) : BaseViewModel(){
         compositeDisposable.add(repo.getBarangs(
             response = { response ->
                 response?.let {
-//                    this::onSuccess
                     onSuccess(it)
                 }
             },
             error = {
-//                this::onError
                 onError(it)
             }
         ))

@@ -6,7 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.inyomanw.mymvvmapplication.R
 import com.example.inyomanw.mymvvmapplication.data.models.Barang
-import com.example.inyomanw.mymvvmapplication.utils.*
+import com.example.core.Utils.*
+import com.example.inyomanw.mymvvmapplication.utils.ScreenState
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_leiva_mvvm.*
 import kotlinx.android.synthetic.main.item_barang.view.*

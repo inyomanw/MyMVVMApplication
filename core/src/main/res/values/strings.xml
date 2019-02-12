@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">MyMVVMApplication</string>
-    <string name="title_activity_leiva_mvvm">LeivaMVVMActivity</string>
+    <string name="app_name">core</string>
 
     <string name="lorem">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit.

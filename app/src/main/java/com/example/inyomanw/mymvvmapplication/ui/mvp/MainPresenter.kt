@@ -1,4 +1,4 @@
-package com.example.inyomanw.mymvvmapplication.ui
+package com.example.inyomanw.mymvvmapplication.ui.mvp
 
 import com.example.inyomanw.mymvvmapplication.base.BasePresenter
 import com.example.inyomanw.mymvvmapplication.data.repository.BarangRepo

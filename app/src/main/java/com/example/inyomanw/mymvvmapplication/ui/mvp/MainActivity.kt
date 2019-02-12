@@ -1,12 +1,11 @@
-package com.example.inyomanw.mymvvmapplication.ui
+package com.example.inyomanw.mymvvmapplication.ui.mvp
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.example.inyomanw.mymvvmapplication.R
 import com.example.inyomanw.mymvvmapplication.data.models.Barang
-import com.example.inyomanw.mymvvmapplication.utils.GeneralRecyclerViewAdapter
-import com.example.inyomanw.mymvvmapplication.utils.loadImage
+import com.example.core.Utils.*
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_barang.view.*

@@ -1,4 +1,4 @@
-package com.example.inyomanw.mymvvmapplication.utils
+package com.example.core.Utils
 
 import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView

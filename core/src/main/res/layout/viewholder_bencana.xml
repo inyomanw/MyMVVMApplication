@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:cardElevation="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/iv_tumbnail"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintHorizontal_bias="1.0"
+                tools:ignore="MissingConstraints"/>
+
+        <View android:layout_width="@dimen/dimen_0dp"
+              android:layout_height="@dimen/dimen_1dp"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/iv_tumbnail"
+              android:background="@color/grey"
+              android:id="@+id/line1"/>
+        <TextView android:layout_width="@dimen/dimen_0dp"
+                  android:layout_height="wrap_content"
+                  tools:text="Test"
+                  android:textColor="#bababa"
+                  android:paddingLeft="@dimen/dimen_10dp"
+                  android:paddingRight="@dimen/dimen_10dp"
+                  android:paddingTop="@dimen/dimen_5dp"
+                  android:paddingBottom="@dimen/dimen_5dp"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintBottom_toTopOf="@id/line2"
+                  app:layout_constraintVertical_chainStyle="packed"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/line1"
+                  android:textSize="@dimen/font_24sp"
+                  android:id="@+id/judul_bencana"/>
+
+        <View android:layout_width="@dimen/dimen_0dp"
+              android:layout_height="@dimen/dimen_1dp"
+              android:background="@color/grey"
+              android:id="@+id/line2"
+              android:layout_marginLeft="10dp"
+              android:layout_marginTop="@dimen/dimen_10dp"
+              android:layout_marginRight="@dimen/dimen_10dp"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/judul_bencana"/>
+
+        <TextView android:layout_width="@dimen/dimen_0dp"
+                  android:layout_height="wrap_content"
+                  android:paddingTop="@dimen/dimen_5dp"
+                  android:layout_marginLeft="@dimen/dimen_24dp"
+                  android:layout_marginRight="@dimen/dimen_24dp"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  android:textSize="@dimen/font_18sp"
+                  app:layout_constraintRight_toRightOf="parent"
+                  tools:text="OWOWOW"
+                  android:textAlignment="center"
+                  app:layout_constraintTop_toBottomOf="@id/line2"
+                  android:id="@+id/tv_donation"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/tv_donation"
+                  android:textAlignment="center"
+                  android:textSize="@dimen/font_14sp"
+                  android:paddingBottom="10dp"
+                  android:paddingTop="@dimen/dimen_5dp"
+                  android:text="terkumpul"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
